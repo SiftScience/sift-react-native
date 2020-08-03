@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
 import siftscience.android.Sift
+import android.text.TextUtils
 
 class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext),
   LifecycleEventListener {
@@ -21,19 +22,30 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
 
     @ReactMethod
     fun setSiftConfig(accountId: String, beaconKey: String, disallowCollectingLocationData: Boolean,
-                      serverUrlFormat: String) {
-        siftConfig = Sift.Config.Builder()
-          .withAccountId(accountId)
-          .withBeaconKey(beaconKey)
-          .withServerUrlFormat(serverUrlFormat)
-          .withDisallowLocationCollection(disallowCollectingLocationData)
-          .build()
+                      serverUrlFormat: String, allowUsingMotionSensors: Boolean) {
+        // Motion sensor API is not available in Sift Android SDK.
+        siftConfig = if (TextUtils.isEmpty(serverUrlFormat)) {
+          Sift.Config.Builder()
+            .withAccountId(accountId)
+            .withBeaconKey(beaconKey)
+            .withDisallowLocationCollection(disallowCollectingLocationData)
+            .build()
+        } else {
+          Sift.Config.Builder()
+            .withAccountId(accountId)
+            .withBeaconKey(beaconKey)
+            .withServerUrlFormat(serverUrlFormat)
+            .withDisallowLocationCollection(disallowCollectingLocationData)
+            .build()
+        }
         Sift.open(reactApplicationContext, siftConfig)
     }
 
     @ReactMethod
     fun setUserId(userId: String) {
-        Sift.setUserId(userId)
+        if (!TextUtils.isEmpty(userId)) {
+          Sift.setUserId(userId)
+        }
     }
 
     @ReactMethod
@@ -44,21 +56,6 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
     @ReactMethod
     fun unsetUserId() {
         Sift.unsetUserId()
-    }
-
-    @ReactMethod
-    fun getAccountId(promise: Promise) {
-        promise.resolve(siftConfig?.accountId)
-    }
-
-    @ReactMethod
-    fun getBeaconKey(promise: Promise) {
-        promise.resolve(siftConfig?.beaconKey)
-    }
-
-    @ReactMethod
-    fun getServerUrlFormat(promise: Promise) {
-        promise.resolve(siftConfig?.serverUrlFormat)
     }
 
     override fun onHostResume() {

@@ -35,31 +35,15 @@ const ConfigurationScreen = () => {
     setIsUploadSuccess(true);
   };
   if (isUploadSuccess) {
-    SiftReactNative.setSiftConfig(accountId, beaconKey, true, serverUrlFormat);
+    SiftReactNative.setSiftConfig(accountId, beaconKey, true, serverUrlFormat, true);
     SiftReactNative.setUserId(userId);
-    if (Platform.OS === 'ios') {
-      SiftReactNative.setAllowUsingMotionSensors(true);
-    }
     SiftReactNative.upload();
-
-    return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#307ecc',
-          justifyContent: 'center',
-        }}>
-        
-        <Text style={styles.successTextStyle}>DONE</Text>
-        
-      </View>
-    );
   }
   return (
-    <View style={{ flex: 1, backgroundColor: '#307ecc' }}>
+    <View style={{ flex: 1}}>
       <ScrollView keyboardShouldPersistTaps="handled">
         <KeyboardAvoidingView enabled>
-          <View style={{padding: 10}}/>
+          <View style={{padding: 30}}/>
           <Text style={styles.titleTextStyle}>Sift SDK Example</Text>
           <View style={styles.SectionStyle}>
             <TextInput
@@ -67,7 +51,7 @@ const ConfigurationScreen = () => {
               value={accountId}
               onChangeText={AccountId => setAccountId(AccountId)}
               placeholder="Enter Account ID"
-              placeholderTextColor="#F6F6F7"
+              placeholderTextColor="gray"
               autoCapitalize="sentences"
               onSubmitEditing={Keyboard.dismiss}
               blurOnSubmit={false}
@@ -79,7 +63,7 @@ const ConfigurationScreen = () => {
               value={beaconKey}
               onChangeText={BeaconKey => setBeaconKey(BeaconKey)}
               placeholder="Enter Beacon Key"
-              placeholderTextColor="#F6F6F7"        
+              placeholderTextColor="gray"
               onSubmitEditing={Keyboard.dismiss}
               blurOnSubmit={false}
             />
@@ -90,19 +74,21 @@ const ConfigurationScreen = () => {
               value={userId}
               onChangeText={UserId => setUserId(UserId)}
               placeholder="Enter User ID"
-              placeholderTextColor="#F6F6F7"
+              placeholderTextColor="gray"
               keyboardType="email-address"
               onSubmitEditing={Keyboard.dismiss}
               blurOnSubmit={false}
             />
           </View>
-          <View style={styles.SectionStyle}>
+          <View style={styles.SectionStyleMultiline}>
             <TextInput
               style={styles.inputStyle}
               value={serverUrlFormat}
               onChangeText={ServerUrlFormat => setServerUrlFormat(ServerUrlFormat)}
               placeholder="Enter Server URL Format"
-              placeholderTextColor="#F6F6F7"
+              placeholderTextColor="gray"
+              multiline={true}
+              numberOfLines={2}
               onSubmitEditing={Keyboard.dismiss}
               blurOnSubmit={false}
             />
@@ -140,8 +126,16 @@ const styles = StyleSheet.create({
     marginRight: 35,
     margin: 10,
   },
+  SectionStyleMultiline: {
+    flexDirection: 'row',
+    height: 50,
+    marginTop: 20,
+    marginLeft: 35,
+    marginRight: 35,
+    margin: 10,
+  },
   buttonStyle: {
-    backgroundColor: 'white',
+    backgroundColor: '#307ecc',
     borderWidth: 0,
     color: '#FFFFFF',
     borderColor: '#7DE24E',
@@ -155,21 +149,21 @@ const styles = StyleSheet.create({
   },
   buttonTextStyle: {
     fontWeight: 'bold',
-    color: '#307ecc',
+    color: 'white',
     paddingVertical: 10,
     fontSize: 16,
   },
   inputStyle: {
     flex: 1,
-    color: 'white',
+    color: 'black',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,
     borderRadius: 30,
-    borderColor: 'white',
+    borderColor: '#307ecc',
   },
   titleTextStyle: {
-    color: 'white',
+    color: '#307ecc',
     textAlign: 'center',
     fontSize: 40,
   },
@@ -184,7 +178,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   successTextStyle: {
-    color: 'white',
+    color: '#307ecc',
     textAlign: 'center',
     fontSize: 18,
     padding: 30,

@@ -12,37 +12,23 @@ RCT_EXPORT_MODULE()
 
 # pragma mark - Configuration
 
-RCT_EXPORT_METHOD(setSiftConfig:(NSString *)accountId beaconKey:(NSString *)beaconKey disallowCollectingLocationData: (BOOL)disallowCollectingLocationData serverUrlFormat:(NSString *)serverUrlFormat) {
+RCT_EXPORT_METHOD(setSiftConfig:(NSString *)accountId beaconKey:(NSString *)beaconKey disallowCollectingLocationData: (BOOL)disallowCollectingLocationData serverUrlFormat:(NSString *)serverUrlFormat allowUsingMotionSensors: (BOOL)allowUsingMotionSensors) {
     Sift *sift = [Sift sharedInstance];
     [sift setAccountId:accountId];
     [sift setBeaconKey:beaconKey];
     [sift setDisallowCollectingLocationData:disallowCollectingLocationData];
-    [sift setServerUrlFormat:serverUrlFormat];
+    if ([serverUrlFormat length] > 0) {
+        [sift setServerUrlFormat:serverUrlFormat];
+    }
+    [sift setAllowUsingMotionSensors:allowUsingMotionSensors];
 }
 
 RCT_EXPORT_METHOD(setUserId: (NSString *)userId) {
     [[Sift sharedInstance] setUserId:userId];
 }
 
-RCT_EXPORT_METHOD(getAccountId: (RCTPromiseResolveBlock) resolve
-                  rejecter: (RCTPromiseRejectBlock) reject) {
-    resolve([Sift sharedInstance].accountId);
-}
-
-RCT_EXPORT_METHOD(getBeaconKey: (RCTPromiseResolveBlock) resolve
-                  rejecter: (RCTPromiseRejectBlock) reject) {
-    resolve([Sift sharedInstance].beaconKey);
-}
-
-RCT_EXPORT_METHOD(getServerUrlFormat: (RCTPromiseResolveBlock) resolve
-                  rejecter: (RCTPromiseRejectBlock) reject) {
-    resolve([Sift sharedInstance].serverUrlFormat);
-}
-
-# pragma mark - Motion Sensors
-
-RCT_EXPORT_METHOD(setAllowUsingMotionSensors: (BOOL)allowUsingMotionSensors) {
-    [[Sift sharedInstance] setAllowUsingMotionSensors:allowUsingMotionSensors];
+RCT_EXPORT_METHOD(unsetUserId) {
+    [[Sift sharedInstance] unsetUserId];
 }
 
 # pragma mark - Integration Helpers
