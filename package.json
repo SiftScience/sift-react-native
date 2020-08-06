@@ -1,6 +1,6 @@
 {
   "name": "sift-react-native",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A React Native wrapper for Sift iOS and Android SDKs",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -86,7 +86,8 @@
   "release-it": {
     "git": {
       "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
+      "tagName": "v${version}",
+      "requireCleanWorkingDir": false
     },
     "npm": {
       "publish": true
@@ -118,7 +119,10 @@
       ]
     }
   },
-  "eslintIgnore": ["node_modules/", "lib/"],
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
   "prettier": {
     "quoteProps": "consistent",
     "singleQuote": true,
@@ -129,6 +133,10 @@
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
-    "targets": ["commonjs", "module", "typescript"]
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
   }
 }
