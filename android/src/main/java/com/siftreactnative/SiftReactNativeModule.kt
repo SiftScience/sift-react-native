@@ -39,6 +39,7 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
             .build()
         }
         Sift.open(reactApplicationContext, siftConfig)
+        Sift.collect()
     }
 
     @ReactMethod
@@ -46,11 +47,6 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
         if (!TextUtils.isEmpty(userId)) {
           Sift.setUserId(userId)
         }
-    }
-
-    @ReactMethod
-    fun upload() {
-        Sift.collect()
     }
 
     @ReactMethod

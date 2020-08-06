@@ -1,9 +1,14 @@
 import { NativeModules } from 'react-native';
 
 type SiftReactNativeType = {
-  setSiftConfig(accountId: string, beaconKey: string, disallowCollectingLocationData: boolean, serverUrlFormat: string, allowUsingMotionSensors: boolean): void;
+  setSiftConfig(
+    accountId: string,
+    beaconKey: string,
+    disallowCollectingLocationData: boolean,
+    serverUrlFormat: string,
+    allowUsingMotionSensors: boolean
+  ): void;
   setUserId(userId: string): void;
-  upload(): void;
   unsetUserId(): void;
 };
 

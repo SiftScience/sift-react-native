@@ -38,7 +38,6 @@ A React Native wrapper for Sift  [iOS](https://github.com/SiftScience/sift-ios) 
 -   Add  `import com.siftreactnative.SiftReactNativePackage;`  to the imports at the top of the file
 -   Add  `new SiftReactNativePackage()`  to the list returned by the  `getPackages()`  method. Add a comma to the previous item if there's already something there.
 
-##### 
 
 Insert the following lines inside the dependencies block in 
    `android/app/build.gradle`:
@@ -78,11 +77,6 @@ SiftReactNative.setUserId(userId);
 If the user logs out of your application, you should unset the user id:
 ```js    
 SiftReactNative.unsetUserId();
-```
-
-#### Start Tracking
-```js    
-SiftReactNative.upload();
 ```
 
 

@@ -1,55 +1,59 @@
 import React, { useState } from 'react';
 import {
   Alert,
-  Platform, 
-  StyleSheet, 
-  View, 
+  Platform,
+  StyleSheet,
+  View,
   TextInput,
   Text,
   KeyboardAvoidingView,
   Keyboard,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 import SiftReactNative from 'sift-react-native';
 
 const ConfigurationScreen = () => {
   let [accountId, setAccountId] = useState('');
   let [beaconKey, setBeaconKey] = useState('');
-  let defaultUrl = Platform.OS === 'ios' ? 'https://api3.siftscience.com/v3/accounts/%@/mobile_events' : 'https://api3.siftscience.com/v3/accounts/%s/mobile_events';
+  let defaultUrl =
+    Platform.OS === 'ios'
+      ? 'https://api3.siftscience.com/v3/accounts/%@/mobile_events'
+      : 'https://api3.siftscience.com/v3/accounts/%s/mobile_events';
   let [serverUrlFormat, setServerUrlFormat] = useState(defaultUrl);
   let [userId, setUserId] = useState('');
   let [errortext, setErrortext] = useState('');
-  let [isUploadSuccess, setIsUploadSuccess] = useState(false);
 
   const handleSubmitButton = () => {
     setErrortext('');
     if (!accountId) {
-      Alert.alert("Missing Fields", "Please fill Account ID");
+      Alert.alert('Missing Fields', 'Please fill Account ID');
       return;
     }
     if (!beaconKey) {
-      Alert.alert("Missing Fields", "Please fill Beacon Key");
+      Alert.alert('Missing Fields', 'Please fill Beacon Key');
       return;
     }
-    setIsUploadSuccess(true);
-  };
-  if (isUploadSuccess) {
-    SiftReactNative.setSiftConfig(accountId, beaconKey, true, serverUrlFormat, true);
+    SiftReactNative.setSiftConfig(
+      accountId,
+      beaconKey,
+      true,
+      serverUrlFormat,
+      true
+    );
     SiftReactNative.setUserId(userId);
-    SiftReactNative.upload();
-  }
+  };
+
   return (
-    <View style={{ flex: 1}}>
+    <View>
       <ScrollView keyboardShouldPersistTaps="handled">
         <KeyboardAvoidingView enabled>
-          <View style={{padding: 30}}/>
           <Text style={styles.titleTextStyle}>Sift SDK Example</Text>
           <View style={styles.SectionStyle}>
             <TextInput
               style={styles.inputStyle}
               value={accountId}
-              onChangeText={AccountId => setAccountId(AccountId)}
+              onChangeText={(AccountId) => setAccountId(AccountId)}
               placeholder="Enter Account ID"
               placeholderTextColor="gray"
               autoCapitalize="sentences"
@@ -61,18 +65,18 @@ const ConfigurationScreen = () => {
             <TextInput
               style={styles.inputStyle}
               value={beaconKey}
-              onChangeText={BeaconKey => setBeaconKey(BeaconKey)}
+              onChangeText={(BeaconKey) => setBeaconKey(BeaconKey)}
               placeholder="Enter Beacon Key"
               placeholderTextColor="gray"
               onSubmitEditing={Keyboard.dismiss}
               blurOnSubmit={false}
             />
           </View>
-           <View style={styles.SectionStyle}>
+          <View style={styles.SectionStyle}>
             <TextInput
               style={styles.inputStyle}
               value={userId}
-              onChangeText={UserId => setUserId(UserId)}
+              onChangeText={(UserId) => setUserId(UserId)}
               placeholder="Enter User ID"
               placeholderTextColor="gray"
               keyboardType="email-address"
@@ -84,7 +88,9 @@ const ConfigurationScreen = () => {
             <TextInput
               style={styles.inputStyle}
               value={serverUrlFormat}
-              onChangeText={ServerUrlFormat => setServerUrlFormat(ServerUrlFormat)}
+              onChangeText={(ServerUrlFormat) =>
+                setServerUrlFormat(ServerUrlFormat)
+              }
               placeholder="Enter Server URL Format"
               placeholderTextColor="gray"
               multiline={true}
@@ -94,14 +100,14 @@ const ConfigurationScreen = () => {
             />
           </View>
           <Text style={styles.hintTextStyle}>Default: {defaultUrl}</Text>
-         
-          {errortext != '' ? (
+          {errortext !== '' ? (
             <Text style={styles.errorTextStyle}> {errortext} </Text>
           ) : null}
           <TouchableOpacity
             style={styles.buttonStyle}
             activeOpacity={0.5}
-            onPress={handleSubmitButton}>
+            onPress={handleSubmitButton}
+          >
             <Text style={styles.buttonTextStyle}>UPLOAD</Text>
           </TouchableOpacity>
         </KeyboardAvoidingView>

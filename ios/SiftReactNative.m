@@ -21,6 +21,7 @@ RCT_EXPORT_METHOD(setSiftConfig:(NSString *)accountId beaconKey:(NSString *)beac
         [sift setServerUrlFormat:serverUrlFormat];
     }
     [sift setAllowUsingMotionSensors:allowUsingMotionSensors];
+    [sift upload];
 }
 
 RCT_EXPORT_METHOD(setUserId: (NSString *)userId) {
@@ -29,12 +30,6 @@ RCT_EXPORT_METHOD(setUserId: (NSString *)userId) {
 
 RCT_EXPORT_METHOD(unsetUserId) {
     [[Sift sharedInstance] unsetUserId];
-}
-
-# pragma mark - Integration Helpers
-
-RCT_EXPORT_METHOD(upload) {
-    [[Sift sharedInstance] upload];
 }
 
 @end
