@@ -1,26 +1,31 @@
 ﻿
 
+
 # sift-react-native
 
 React Native wrapper for Sift  [iOS](https://github.com/SiftScience/sift-ios) and [Android](https://github.com/SiftScience/sift-android) SDKs
 
 ## Installation
 
- - Install library from `npm`
-          `yarn add sift-react-native`
-          or 
-          `npm install sift-react-native`           
+ - Install library from **npm**:  
+          `yarn add sift-react-native`  
+          or  
+          `npm install sift-react-native`  
 
 ## Link native code 
-### iOS RN 0.60.0 or above
+
+### Android React Native 0.60.0 or above
+No additional setup is required
+
+### iOS React Native 0.60.0 or above
 1.  Insert the following line in Podfile where new pods are added:
 `pod 'sift-react-native', :path => '../node_modules/sift-react-native'`
 2.  Navigate to the ios directory of the project via terminal and run  `pod install`
-> _Currently library does not support pre RN 0.60.0 versions in iOS. Support will be soon available._
 
-### Android pre RN 0.60.0
+### Android React Native 0.59 or below
 #### Automatically
 `react-native link`
+
 #### Manually
 1.  Append the following lines to  `android/settings.gradle`:
     
@@ -44,8 +49,8 @@ Insert the following lines inside the dependencies block in
        
        implementation 'com.android.support:support-v4:27.0.2'
 
- 
-    
+### iOS React Native 0.59 or below
+Support will be available soon    
 
 ## Usage
 First, import the module:
@@ -100,3 +105,4 @@ When the bootstrap is done, you will be able to start the example app by executi
 ## License
 
 MIT
+
