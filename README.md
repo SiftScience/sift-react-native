@@ -1,16 +1,15 @@
 ﻿
 
-
 # sift-react-native
 
-A React Native wrapper for Sift  [iOS](https://github.com/SiftScience/sift-ios) and [Android](https://github.com/SiftScience/sift-android) SDKs
+React Native wrapper for Sift  [iOS](https://github.com/SiftScience/sift-ios) and [Android](https://github.com/SiftScience/sift-android) SDKs
 
 ## Installation
 
- - Install from  **Github**
-          `npm install SiftScience/sift-react-native` 
+ - Install library from `npm`
+          `yarn add sift-react-native`
           or 
-          `yarn add https://github.com/SiftScience/sift-react-native`
+          `npm install sift-react-native`           
 
 ## Link native code 
 ### iOS RN 0.60.0 or above
@@ -18,15 +17,16 @@ A React Native wrapper for Sift  [iOS](https://github.com/SiftScience/sift-ios) 
 `pod 'sift-react-native', :path => '../node_modules/sift-react-native'`
 2.  Navigate to the ios directory of the project via terminal and run  `pod install`
 > _Currently library does not support pre RN 0.60.0 versions in iOS. Support will be soon available._
+
 ### Android pre RN 0.60.0
-   #### Automatically
+#### Automatically
 `react-native link`
 #### Manually
 1.  Append the following lines to  `android/settings.gradle`:
     
-    include ':sift-react-native'
+    `include ':sift-react-native'`
     
-    project(':sift-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/sift-react-native/android')
+    `project(':sift-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/sift-react-native/android')`
     
 2.  Insert the following lines inside the dependencies block in  `android/app/build.gradle`:
     
@@ -100,4 +100,3 @@ When the bootstrap is done, you will be able to start the example app by executi
 ## License
 
 MIT
-
