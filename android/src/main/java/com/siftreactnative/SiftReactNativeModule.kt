@@ -54,6 +54,11 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
         Sift.unsetUserId()
     }
 
+    @ReactMethod
+    fun upload() {
+        Sift.collect()
+    }
+
     override fun onHostResume() {
         Sift.resume(reactApplicationContext)
     }
