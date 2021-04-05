@@ -83,7 +83,11 @@ If the user logs out of your application, you should unset the user id:
 ```js    
 SiftReactNative.unsetUserId();
 ```
-
+#### Upload event 
+To upload collected events to sift.
+```js
+SiftReactNative.upload();
+```
 
 ## Example
 
