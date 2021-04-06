@@ -32,4 +32,8 @@ RCT_EXPORT_METHOD(unsetUserId) {
     [[Sift sharedInstance] unsetUserId];
 }
 
+RCT_EXPORT_METHOD(upload) {
+    [[Sift sharedInstance] upload];
+}
+
 @end
