@@ -10,6 +10,7 @@ type SiftReactNativeType = {
   ): void;
   setUserId(userId: string): void;
   unsetUserId(): void;
+  upload(): void;
 };
 
 const { SiftReactNative } = NativeModules;
