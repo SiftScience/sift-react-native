@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		137F094D26B00BA30015EE5D /* sift-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 137F094C26B00BA30015EE5D /* sift-ios */; };
 		5E555C0D2413F4C50049A1A2 /* SiftReactNative.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* SiftReactNative.mm */; };
 		8414ADCA24C6930C0081CBEE /* SiftReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 8414ADC924C6930C0081CBEE /* SiftReactNative.m */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				137F094D26B00BA30015EE5D /* sift-ios in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +77,9 @@
 			dependencies = (
 			);
 			name = SiftReactNative;
+			packageProductDependencies = (
+				137F094C26B00BA30015EE5D /* sift-ios */,
+			);
 			productName = RCTDataManager;
 			productReference = 134814201AA4EA6300B7C361 /* libSiftReactNative.a */;
 			productType = "com.apple.product-type.library.static";
@@ -102,6 +107,9 @@
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
+			packageReferences = (
+				137F094B26B00BA30015EE5D /* XCRemoteSwiftPackageReference "sift-ios" */,
+			);
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
 			projectRoot = "";
@@ -271,6 +279,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		137F094B26B00BA30015EE5D /* XCRemoteSwiftPackageReference "sift-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SiftScience/sift-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		137F094C26B00BA30015EE5D /* sift-ios */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 137F094B26B00BA30015EE5D /* XCRemoteSwiftPackageReference "sift-ios" */;
+			productName = "sift-ios";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
 }
