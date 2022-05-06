@@ -58,6 +58,11 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
     fun upload() {
         Sift.collect()
     }
+    
+    @ReactMethod
+    fun setPageName(pageName: String) {
+        Sift.open(reactApplicationContext, pageName)
+    }
 
     override fun onHostResume() {
         Sift.resume(reactApplicationContext)
