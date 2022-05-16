@@ -88,7 +88,13 @@ To upload collected events to sift.
 ```js
 SiftReactNative.upload();
 ```
+#### Set page name 
+>**_NB: This feature is available only in Android platform_**
 
+To set the page name
+```js
+SiftReactNative.setPageName("HomePage");
+```
 ## Example
 
 To see `sift-react-native` in action you can check out the source in the `example` folder.
