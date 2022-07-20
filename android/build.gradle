@@ -139,5 +139,5 @@ dependencies {
   // noinspection GradleDynamicVersion
   api 'com.facebook.react:react-native:+'
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  implementation "com.siftscience:sift-android:1.0.0"
+  implementation "com.siftscience:sift-android:1.1.2"
 }
