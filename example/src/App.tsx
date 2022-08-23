@@ -38,8 +38,7 @@ const ConfigurationScreen = () => {
       accountId,
       beaconKey,
       true,
-      serverUrlFormat,
-      true
+      serverUrlFormat
     );
     SiftReactNative.setUserId(userId);
   };
