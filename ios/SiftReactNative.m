@@ -12,15 +12,14 @@ RCT_EXPORT_MODULE()
 
 # pragma mark - Configuration
 
-RCT_EXPORT_METHOD(setSiftConfig:(NSString *)accountId beaconKey:(NSString *)beaconKey disallowCollectingLocationData: (BOOL)disallowCollectingLocationData serverUrlFormat:(NSString *)serverUrlFormat allowUsingMotionSensors: (BOOL)allowUsingMotionSensors) {
-    Sift *sift = [Sift sharedInstance];
+RCT_EXPORT_METHOD(setSiftConfig:(NSString *)accountId beaconKey:(NSString *)beaconKey disallowCollectingLocationData:
+(BOOL)disallowCollectingLocationData serverUrlFormat) {
     [sift setAccountId:accountId];
     [sift setBeaconKey:beaconKey];
     [sift setDisallowCollectingLocationData:disallowCollectingLocationData];
     if ([serverUrlFormat length] > 0) {
         [sift setServerUrlFormat:serverUrlFormat];
     }
-    [sift setAllowUsingMotionSensors:allowUsingMotionSensors];
     [sift upload];
 }
 
