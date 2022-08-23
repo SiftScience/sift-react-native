@@ -13,7 +13,7 @@ RCT_EXPORT_MODULE()
 # pragma mark - Configuration
 
 RCT_EXPORT_METHOD(setSiftConfig:(NSString *)accountId beaconKey:(NSString *)beaconKey disallowCollectingLocationData:
-(BOOL)disallowCollectingLocationData serverUrlFormat) {
+(BOOL)disallowCollectingLocationData serverUrlFormat:(NSString *)serverUrlFormat) {
     [sift setAccountId:accountId];
     [sift setBeaconKey:beaconKey];
     [sift setDisallowCollectingLocationData:disallowCollectingLocationData];
