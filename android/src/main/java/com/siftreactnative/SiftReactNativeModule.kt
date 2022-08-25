@@ -22,20 +22,17 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
 
     @ReactMethod
     fun setSiftConfig(accountId: String, beaconKey: String, disallowCollectingLocationData: Boolean,
-                      serverUrlFormat: String, allowUsingMotionSensors: Boolean) {
-        // Motion sensor API is not available in Sift Android SDK.
+                      serverUrlFormat: String) {
         siftConfig = if (TextUtils.isEmpty(serverUrlFormat)) {
           Sift.Config.Builder()
             .withAccountId(accountId)
             .withBeaconKey(beaconKey)
-            .withDisallowLocationCollection(disallowCollectingLocationData)
             .build()
         } else {
           Sift.Config.Builder()
             .withAccountId(accountId)
             .withBeaconKey(beaconKey)
             .withServerUrlFormat(serverUrlFormat)
-            .withDisallowLocationCollection(disallowCollectingLocationData)
             .build()
         }
         Sift.open(reactApplicationContext, siftConfig)

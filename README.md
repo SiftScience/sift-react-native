@@ -60,7 +60,7 @@ import SiftReactNative from "sift-react-native";
 Then, invoke the following method to initialise the SDK:
 #### Configure the account details
 ```js
-SiftReactNative.setSiftConfig(accountId, beaconKey, disallowCollectingLocationData, serverUrlFormat, allowUsingMotionSensors);
+SiftReactNative.setSiftConfig(accountId, beaconKey, disallowCollectingLocationData, serverUrlFormat);
 ```
 Where:
 - **accountId** (string, the Account ID that needs to be obtained from Sift console under [API Keys](https://console.sift.com/developer/api-keys) tab) **_required_**
@@ -71,8 +71,6 @@ Sift will not request permissions that are not granted by the user from your app
 - **serverUrlFormat** (string, the format of URL where the data needs to be uploaded)
 -- Sample URL format for iOS: `https://api3.siftscience.com/v3/accounts/%@/mobile_events`
 -- Sample URL format for Android: `https://api3.siftscience.com/v3/accounts/%s/mobile_events`
-- **allowUsingMotionSensors** (boolean, If your app uses motion sensors [_accelerometer, gyro, or magnetometer_], and you want to send motion data to Sift)
-> This will enable the SDK to occasionally collect motion data in the background.
 > **_NB: This feature is available only in iOS platform_**
 #### Set the User ID
 As soon as your application is aware of the user id, set it on the Sift instance using the code below. All subsequent events will include the user id.

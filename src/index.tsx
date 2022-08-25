@@ -5,8 +5,7 @@ type SiftReactNativeType = {
     accountId: string,
     beaconKey: string,
     disallowCollectingLocationData: boolean,
-    serverUrlFormat: string,
-    allowUsingMotionSensors: boolean
+    serverUrlFormat: string
   ): void;
   setUserId(userId: string): void;
   unsetUserId(): void;
