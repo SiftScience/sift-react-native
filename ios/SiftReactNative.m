@@ -14,6 +14,7 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(setSiftConfig:(NSString *)accountId beaconKey:(NSString *)beaconKey disallowCollectingLocationData:
 (BOOL)disallowCollectingLocationData serverUrlFormat:(NSString *)serverUrlFormat) {
+    Sift *sift = [Sift sharedInstance];
     [sift setAccountId:accountId];
     [sift setBeaconKey:beaconKey];
     [sift setDisallowCollectingLocationData:disallowCollectingLocationData];
