@@ -34,12 +34,7 @@ const ConfigurationScreen = () => {
       Alert.alert('Missing Fields', 'Please fill Beacon Key');
       return;
     }
-    SiftReactNative.setSiftConfig(
-      accountId,
-      beaconKey,
-      true,
-      serverUrlFormat
-    );
+    SiftReactNative.setSiftConfig(accountId, beaconKey, true, serverUrlFormat);
     SiftReactNative.setUserId(userId);
   };
 
