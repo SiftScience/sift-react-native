@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Alert,
   Platform,
@@ -10,6 +10,7 @@ import {
   Keyboard,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import SiftReactNative from 'sift-react-native';
 
@@ -34,84 +35,80 @@ const ConfigurationScreen = () => {
       Alert.alert('Missing Fields', 'Please fill Beacon Key');
       return;
     }
-    SiftReactNative.setSiftConfig(
-      accountId,
-      beaconKey,
-      true,
-      serverUrlFormat
-    );
+    SiftReactNative.setSiftConfig(accountId, beaconKey, true, serverUrlFormat);
     SiftReactNative.setUserId(userId);
   };
 
   return (
-    <View>
-      <ScrollView keyboardShouldPersistTaps="handled">
-        <KeyboardAvoidingView enabled>
-          <Text style={styles.titleTextStyle}>Sift SDK Example</Text>
-          <View style={styles.SectionStyle}>
-            <TextInput
-              style={styles.inputStyle}
-              value={accountId}
-              onChangeText={(AccountId) => setAccountId(AccountId)}
-              placeholder="Enter Account ID"
-              placeholderTextColor="gray"
-              autoCapitalize="sentences"
-              onSubmitEditing={Keyboard.dismiss}
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyle}>
-            <TextInput
-              style={styles.inputStyle}
-              value={beaconKey}
-              onChangeText={(BeaconKey) => setBeaconKey(BeaconKey)}
-              placeholder="Enter Beacon Key"
-              placeholderTextColor="gray"
-              onSubmitEditing={Keyboard.dismiss}
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyle}>
-            <TextInput
-              style={styles.inputStyle}
-              value={userId}
-              onChangeText={(UserId) => setUserId(UserId)}
-              placeholder="Enter User ID"
-              placeholderTextColor="gray"
-              keyboardType="email-address"
-              onSubmitEditing={Keyboard.dismiss}
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyleMultiline}>
-            <TextInput
-              style={styles.inputStyle}
-              value={serverUrlFormat}
-              onChangeText={(ServerUrlFormat) =>
-                setServerUrlFormat(ServerUrlFormat)
-              }
-              placeholder="Enter Server URL Format"
-              placeholderTextColor="gray"
-              multiline={true}
-              numberOfLines={2}
-              onSubmitEditing={Keyboard.dismiss}
-              blurOnSubmit={false}
-            />
-          </View>
-          <Text style={styles.hintTextStyle}>Default: {defaultUrl}</Text>
-          {errortext !== '' ? (
-            <Text style={styles.errorTextStyle}> {errortext} </Text>
-          ) : null}
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            activeOpacity={0.5}
-            onPress={handleSubmitButton}
-          >
-            <Text style={styles.buttonTextStyle}>UPLOAD</Text>
-          </TouchableOpacity>
-        </KeyboardAvoidingView>
-      </ScrollView>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+        <ScrollView keyboardShouldPersistTaps="handled">
+          <KeyboardAvoidingView enabled>
+            <Text style={styles.titleTextStyle}>Sift SDK Example</Text>
+            <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                value={accountId}
+                onChangeText={AccountId => setAccountId(AccountId)}
+                placeholder="Enter Account ID"
+                placeholderTextColor="gray"
+                autoCapitalize="sentences"
+                onSubmitEditing={Keyboard.dismiss}
+                blurOnSubmit={false}
+              />
+            </View>
+            <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                value={beaconKey}
+                onChangeText={BeaconKey => setBeaconKey(BeaconKey)}
+                placeholder="Enter Beacon Key"
+                placeholderTextColor="gray"
+                onSubmitEditing={Keyboard.dismiss}
+                blurOnSubmit={false}
+              />
+            </View>
+            <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                value={userId}
+                onChangeText={UserId => setUserId(UserId)}
+                placeholder="Enter User ID"
+                placeholderTextColor="gray"
+                keyboardType="email-address"
+                onSubmitEditing={Keyboard.dismiss}
+                blurOnSubmit={false}
+              />
+            </View>
+            <View style={styles.SectionStyleMultiline}>
+              <TextInput
+                style={styles.inputStyle}
+                value={serverUrlFormat}
+                onChangeText={ServerUrlFormat =>
+                  setServerUrlFormat(ServerUrlFormat)
+                }
+                placeholder="Enter Server URL Format"
+                placeholderTextColor="gray"
+                multiline={true}
+                numberOfLines={2}
+                onSubmitEditing={Keyboard.dismiss}
+                blurOnSubmit={false}
+              />
+            </View>
+            <Text style={styles.hintTextStyle}>Default: {defaultUrl}</Text>
+            {errortext !== '' ? (
+              <Text style={styles.errorTextStyle}> {errortext} </Text>
+            ) : null}
+            <TouchableOpacity
+              style={styles.buttonStyle}
+              activeOpacity={0.5}
+              onPress={handleSubmitButton}>
+              <Text style={styles.buttonTextStyle}>UPLOAD</Text>
+            </TouchableOpacity>
+          </KeyboardAvoidingView>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 };
 
