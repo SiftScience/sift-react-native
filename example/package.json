@@ -1,5 +1,6 @@
 {
   "name": "sample",
+  "description": "Example app for sift-react-native",
   "version": "0.0.1",
   "private": true,
   "scripts": {
