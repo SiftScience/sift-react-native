@@ -369,7 +369,7 @@ PODS:
     - React-logger (= 0.70.6)
     - React-perflogger (= 0.70.6)
   - Sift (2.1.1)
-  - sift-react-native (0.1.7):
+  - sift-react-native (0.1.8):
     - React
     - Sift
   - SocketRocket (0.6.0)
@@ -436,7 +436,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - sift-react-native (from `../..`)
+  - sift-react-native (from `../node_modules/sift-react-native`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -526,7 +526,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   sift-react-native:
-    :path: "../.."
+    :path: "../node_modules/sift-react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -578,11 +578,11 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 15437b576139df27635400de0599d9844f1ab817
   ReactCommon: 349be31adeecffc7986a0de875d7fb0dcf4e251c
   Sift: 8cd26419e0a9b0d94bd733b296353b68c44192aa
-  sift-react-native: 23fbdb62ad23b51b576c444705e10efae5de55b9
+  sift-react-native: 9ed8bc21788e3233399eaf196425246442aa7dee
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 99caf8d5ab45e9d637ee6e0174ec16fbbb01bcfc
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: d6b0407a53c1337a7ac61c271e22ecdf8ef38135
+PODFILE CHECKSUM: c77089403b1e6de7ca7adfa263fe833cec89b672
 
 COCOAPODS: 1.11.3

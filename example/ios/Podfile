@@ -4,10 +4,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
-target 'SiftReactNativeExample' do
-  # Pods for SiftReactNativeExample
-  pod 'sift-react-native', :path => '../..'
-  
+target 'sample' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -28,6 +25,11 @@ target 'SiftReactNativeExample' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  target 'sampleTests' do
+    inherit! :complete
+    # Pods for testing
+  end
 
   post_install do |installer|
     react_native_post_install(
