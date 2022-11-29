@@ -14,13 +14,14 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(setSiftConfig:(NSString *)accountId beaconKey:(NSString *)beaconKey disallowCollectingLocationData:
 (BOOL)disallowCollectingLocationData serverUrlFormat:(NSString *)serverUrlFormat) {
-    [[Sift sharedInstance] setAccountId:accountId];
-    [[Sift sharedInstance] setBeaconKey:beaconKey];
-    [[Sift sharedInstance] setDisallowCollectingLocationData:disallowCollectingLocationData];
+    Sift *sift = [Sift sharedInstance];
+    [sift setAccountId:accountId];
+    [sift setBeaconKey:beaconKey];
+    [sift setDisallowCollectingLocationData:disallowCollectingLocationData];
     if ([serverUrlFormat length] > 0) {
-        [[Sift sharedInstance] setServerUrlFormat:serverUrlFormat];
+        [sift setServerUrlFormat:serverUrlFormat];
     }
-    [[Sift sharedInstance] upload];
+    [sift upload];
 }
 
 RCT_EXPORT_METHOD(setUserId: (NSString *)userId) {
