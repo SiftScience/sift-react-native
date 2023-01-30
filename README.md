@@ -18,6 +18,8 @@ React Native wrapper for Sift  [iOS](https://github.com/SiftScience/sift-ios) an
 No additional setup is required
 
 ### iOS React Native 0.60.0 or above
+
+Mostly autolinking will do the job. If manual linking is required, please follow the below steps:
 1.  Insert the following line in Podfile where new pods are added:
 `pod 'sift-react-native', :path => '../node_modules/sift-react-native'`
 2.  Navigate to the ios directory of the project via terminal and run  `pod install`
