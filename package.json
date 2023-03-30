@@ -1,6 +1,6 @@
 {
   "name": "sift-react-native",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A React Native wrapper for Sift iOS and Android SDKs",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
