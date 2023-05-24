@@ -96,16 +96,16 @@ To set the page name
 SiftReactNative.setPageName("HomePage");
 ```
 ## Add Screen Navigation 
-### 1.   Add an additional screen 
-### 2.   Create root.js , which file serves as the root component of the React Native application. It sets up the navigation using React Navigation and  integrates with the `sift-react-native` library for tracking screen views. Install and import neccessary dependencies.
-#### 3.   Create a stack navigator using createNativeStackNavigator() from @react-navigation/native-stack
+##### 1.   Add an additional screen 
+##### 2.   Create root.js , which file serves as the root component of the React Native application. It sets up the navigation using React Navigation and  integrates with the `sift-react-native` library for tracking screen views. Install and import neccessary dependencies.
+##### 3.   Create a stack navigator using createNativeStackNavigator() from @react-navigation/native-stack
              `const Stack = createNativeStackNavigator();`
-#### 4.   Define the Root component and set up the navigation container
+##### 4.   Define the Root component and set up the navigation container
            ` import { NavigationContainer } from '@react-navigation/native';`
-#### 5.   Inside the Root component, the useEffect hook is used to track the initial screen view by setting the page name with  `SiftReactNative.setPageName()` and uploading the event with `SiftReactNative.upload()`.
-#### 6.   The NavigationContainer component wraps the stack navigator and provides the navigation context. The ref and event handlers are used to track and update the current screen name dynamically.
+##### 5.   Inside the Root component, the useEffect hook is used to track the initial screen view by setting the page name with  `SiftReactNative.setPageName()` and uploading the event with `SiftReactNative.upload()`.
+##### 6.   The NavigationContainer component wraps the stack navigator and provides the navigation context. The ref and event handlers are used to track and update the current screen name dynamically.
             
-#### 7.   The stack navigator is created using the createNativeStackNavigator() function, and the individual screens (ScreenOne and ScreenTwo) are defined within the Stack.Navigator component.
+##### 7.   The stack navigator is created using the createNativeStackNavigator() function, and the individual screens (ScreenOne and ScreenTwo) are defined within the Stack.Navigator component.
 
 
 ## Example
