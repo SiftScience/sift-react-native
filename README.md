@@ -95,6 +95,16 @@ To set the page name
 ```js
 SiftReactNative.setPageName("HomePage");
 ```
+#### Add an additional screen 
+#### Create root.js , which file serves as the root component of the React Native application. It sets up the navigation using React Navigation and integrates with the `sift-react-native` library for tracking screen views.
+#### Create a stack navigator using createNativeStackNavigator() from @react-navigation/native-stack
+  `const Stack = createNativeStackNavigator();`
+#### Define the Root component and set up the navigation container
+#### Inside the Root component, the useEffect hook is used to track the initial screen view by setting the page name with SiftReactNative.setPageName() and uploading the event with SiftReactNative.upload().
+#### The NavigationContainer component wraps the stack navigator and provides the navigation context. The ref and event handlers are used to track and update the current screen name dynamically.
+#### The stack navigator is created using the createNativeStackNavigator() function, and the individual screens (ScreenOne and ScreenTwo) are defined within the Stack.Navigator component.
+
+
 ## Example
 
 To see `sift-react-native` in action you can check out the source in the `example` folder.
