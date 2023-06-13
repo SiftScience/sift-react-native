@@ -95,7 +95,7 @@ To set the page name
 ```js
 SiftReactNative.setPageName("HomePage");
 ```
-##Track Screen Navigation 
+## Track Screen Navigation 
 
 ##### 1.  If you don't have root.js, create it, which file serves as the root component of the React Native application. It sets up the navigation using React Navigation and  integrates with the `sift-react-native` library for tracking screen views. Install and import neccessary dependencies.
 
