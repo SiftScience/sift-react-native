@@ -27,11 +27,13 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
           Sift.Config.Builder()
             .withAccountId(accountId)
             .withBeaconKey(beaconKey)
+            .withDisallowLocationCollection(disallowCollectingLocationData)
             .build()
         } else {
           Sift.Config.Builder()
             .withAccountId(accountId)
             .withBeaconKey(beaconKey)
+            .withDisallowLocationCollection(disallowCollectingLocationData)
             .withServerUrlFormat(serverUrlFormat)
             .build()
         }
