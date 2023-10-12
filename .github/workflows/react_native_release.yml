@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+env:
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  release:
+    name: Perform the Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+#  Release arent available, uncomment below lines when release is available
+#       - name: Release the package
+#         run: |
+#           npm run release -- --yes
+#           git push --follow-tags
+
+      - name: Check release on npm
+        run: npm show sift-react-native version
+
+      - name: Check release on GitHub
+        run: |
+          curl -s https://api.github.com/repos/SiftScience/sift-react-native/releases/latest | jq -r '.tag_name'
