@@ -36,4 +36,9 @@ RCT_EXPORT_METHOD(upload) {
     [[Sift sharedInstance] upload];
 }
 
+RCT_EXPORT_METHOD(setPageName:(NSString *)pageName) {
+    //TODO: add valid method from SDK [Sift open:pageName];
+    NSLog(@"Setting page name: %@", pageName);
+}
+
 @end

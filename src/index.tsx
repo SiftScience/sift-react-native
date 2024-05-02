@@ -8,6 +8,7 @@ type SiftReactNativeType = {
     serverUrlFormat: string
   ): void;
   setUserId(userId: string): void;
+  setPageName(pageName: string): void;
   unsetUserId(): void;
   upload(): void;
 };
