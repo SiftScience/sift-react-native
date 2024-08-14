@@ -305,8 +305,8 @@ PODS:
     - React-jsi (= 0.70.6)
     - React-logger (= 0.70.6)
     - React-perflogger (= 0.70.6)
-  - Sift (2.1.8)
-  - sift-react-native (0.1.12):
+  - Sift (2.2.0)
+  - sift-react-native (0.1.13):
     - React
     - Sift
   - Yoga (1.14.0)
@@ -464,10 +464,10 @@ SPEC CHECKSUMS:
   React-RCTVibration: c75ceef7aa60a33b2d5731ebe5800ddde40cefc4
   React-runtimeexecutor: 15437b576139df27635400de0599d9844f1ab817
   ReactCommon: 349be31adeecffc7986a0de875d7fb0dcf4e251c
-  Sift: 6cab8e5870e9e48d61ec69a258a6da6bee592dec
-  sift-react-native: 544656c6c977ddb41f6c1f6f379e76cbabbb79ea
+  Sift: 36971c522cd137245438cb9ed2ffd3a42eadfc15
+  sift-react-native: 2dbf427e81c1feb17cbc96479e3618b8244b9abc
   Yoga: 99caf8d5ab45e9d637ee6e0174ec16fbbb01bcfc
 
-PODFILE CHECKSUM: e3ad5cf1ed8f2a1a8b857c829defbd6807ae58d6
+PODFILE CHECKSUM: 46a8806098437f64bb2407b1210c09c7d164f0ac
 
 COCOAPODS: 1.14.3

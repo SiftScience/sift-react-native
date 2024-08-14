@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		137F094D26B00BA30015EE5D /* sift-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 137F094C26B00BA30015EE5D /* sift-ios */; };
+		137F094D26B00BA30015EE5D /* sift-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 137F094C26B00BA30015EE5D /* sift-ios */; settings = {ATTRIBUTES = (Required, ); }; };
 		5E555C0D2413F4C50049A1A2 /* SiftReactNative.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* SiftReactNative.mm */; };
 		8414ADCA24C6930C0081CBEE /* SiftReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 8414ADC924C6930C0081CBEE /* SiftReactNative.m */; };
 /* End PBXBuildFile section */
@@ -286,7 +286,7 @@
 			repositoryURL = "https://github.com/SiftScience/sift-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.4;
+				minimumVersion = 2.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

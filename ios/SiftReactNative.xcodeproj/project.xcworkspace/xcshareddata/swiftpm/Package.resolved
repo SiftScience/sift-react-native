@@ -1,14 +1,15 @@
 {
+  "originHash" : "90ab007ed727c48ed41e0a767f60bc5cd3dedb1f218f24fbf5b49a73a8f234f7",
   "pins" : [
     {
       "identity" : "sift-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SiftScience/sift-ios.git",
       "state" : {
-        "revision" : "46bf3b54f5d231dc4b565d27108de4f823117413",
-        "version" : "2.1.1"
+        "revision" : "b4306efc99888568a670a2b921fccf28262b2ce3",
+        "version" : "2.2.0"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
