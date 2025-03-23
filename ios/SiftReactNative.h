@@ -3,7 +3,6 @@
 
 @protocol SiftReactNative <RCTTurboModule, RCTBridgeModule>
 
-// Declare your methods (they will be automatically exposed to JS)
 - (void)setSiftConfig:(NSString *)accountId
                          beaconKey:(NSString *)beaconKey
     disallowCollectingLocationData:(BOOL)disallowCollectingLocationData

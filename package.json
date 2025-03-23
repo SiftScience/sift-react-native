@@ -140,7 +140,7 @@
     ]
   },
   "codegenConfig": {
-    "name": "ReactNativeSift",
+    "name": "SiftReactNative",
     "type": "modules",
     "jsSrcsDir": "src",
     "android": {
