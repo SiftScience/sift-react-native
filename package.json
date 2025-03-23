@@ -138,5 +138,13 @@
       "module",
       "typescript"
     ]
+  },
+  "codegenConfig": {
+    "name": "ReactNativeSift",
+    "type": "modules",
+    "jsSrcsDir": "src",
+    "android": {
+      "javaPackageName": "com.nativelocalstorage"
+    }
   }
 }

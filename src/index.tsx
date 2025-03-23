@@ -1,6 +1,7 @@
-import { NativeModules } from 'react-native';
+import type { TurboModule } from 'react-native';
+import { TurboModuleRegistry } from 'react-native';
 
-type SiftReactNativeType = {
+export interface SiftReactNative extends TurboModule {
   setSiftConfig(
     accountId: string,
     beaconKey: string,
@@ -10,8 +11,8 @@ type SiftReactNativeType = {
   setUserId(userId: string): void;
   unsetUserId(): void;
   upload(): void;
-};
+}
 
-const { SiftReactNative } = NativeModules;
-
-export default SiftReactNative as SiftReactNativeType;
+export default TurboModuleRegistry.getEnforcing<SiftReactNative>(
+  'SiftReactNative'
+);
