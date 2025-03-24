@@ -1,5 +1,15 @@
+#import <ReactCommon/RCTTurboModule.h>
 #import <React/RCTBridgeModule.h>
 
-@interface SiftReactNative : NSObject <RCTBridgeModule>
+@protocol SiftReactNative <RCTTurboModule, RCTBridgeModule>
+
+- (void)setSiftConfig:(NSString *)accountId
+                         beaconKey:(NSString *)beaconKey
+    disallowCollectingLocationData:(BOOL)disallowCollectingLocationData
+                   serverUrlFormat:(NSString *)serverUrlFormat;
+
+- (void)setUserId:(NSString *)userId;
+- (void)unsetUserId;
+- (void)upload;
 
 @end

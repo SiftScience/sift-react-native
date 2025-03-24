@@ -1,15 +1,18 @@
 package com.siftreactnative
 
-import com.facebook.react.bridge.LifecycleEventListener
+import android.text.TextUtils
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.Promise
+import com.facebook.react.turbomodule.core.interfaces.TurboModule
+import com.facebook.react.bridge.LifecycleEventListener
 import siftscience.android.Sift
-import android.text.TextUtils
 
-class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext),
-  LifecycleEventListener {
+class SiftReactNativeModule(reactContext: ReactApplicationContext) :
+    ReactContextBaseJavaModule(reactContext),
+    TurboModule,
+    LifecycleEventListener {
+
     private var siftConfig: Sift.Config? = null
 
     init {
@@ -21,21 +24,25 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
     }
 
     @ReactMethod
-    fun setSiftConfig(accountId: String, beaconKey: String, disallowCollectingLocationData: Boolean,
-                      serverUrlFormat: String) {
+    fun setSiftConfig(
+        accountId: String,
+        beaconKey: String,
+        disallowCollectingLocationData: Boolean,
+        serverUrlFormat: String
+    ) {
         siftConfig = if (TextUtils.isEmpty(serverUrlFormat)) {
-          Sift.Config.Builder()
-            .withAccountId(accountId)
-            .withBeaconKey(beaconKey)
-            .withDisallowLocationCollection(disallowCollectingLocationData)
-            .build()
+            Sift.Config.Builder()
+                .withAccountId(accountId)
+                .withBeaconKey(beaconKey)
+                .withDisallowLocationCollection(disallowCollectingLocationData)
+                .build()
         } else {
-          Sift.Config.Builder()
-            .withAccountId(accountId)
-            .withBeaconKey(beaconKey)
-            .withDisallowLocationCollection(disallowCollectingLocationData)
-            .withServerUrlFormat(serverUrlFormat)
-            .build()
+            Sift.Config.Builder()
+                .withAccountId(accountId)
+                .withBeaconKey(beaconKey)
+                .withDisallowLocationCollection(disallowCollectingLocationData)
+                .withServerUrlFormat(serverUrlFormat)
+                .build()
         }
         Sift.open(reactApplicationContext, siftConfig)
         Sift.collect()
@@ -44,7 +51,7 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
     @ReactMethod
     fun setUserId(userId: String) {
         if (!TextUtils.isEmpty(userId)) {
-          Sift.setUserId(userId)
+            Sift.setUserId(userId)
         }
     }
 
@@ -74,6 +81,4 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) : ReactContex
     override fun onHostDestroy() {
         Sift.close()
     }
-
-    
 }
