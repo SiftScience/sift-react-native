@@ -13,7 +13,7 @@
   "dependencies": {
     "react": "18.1.0",
     "react-native": "0.70.6",
-    "sift-react-native": "^0.1.8"
+    "sift-react-native": "file:../"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
