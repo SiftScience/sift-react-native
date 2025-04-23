@@ -5,6 +5,7 @@
 ## Testing
 
 ## Checklist
+
 - [ ] The change was thoroughly tested manually
 - [ ] The change was covered with unit tests
 - [ ] The change was tested with the integration example
