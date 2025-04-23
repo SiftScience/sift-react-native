@@ -1,5 +1,9 @@
 ﻿# Change Log
 
+## [0.1.14] - 2025-04-23
+
+- Upgraded `sift-android` to version `1.3.0`.
+
 ## [0.1.13] - 2024-09-03
 
 ### Fixed
