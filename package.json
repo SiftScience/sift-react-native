@@ -51,7 +51,7 @@
     "type": "git",
     "url": "git+https://github.com/SiftScience/sift-react-native.git"
   },
-  "author": "SiftScience <ngupta@siftscience.com> (https://github.com/SiftScience) <ngupta@siftscience.com> (https://github.com/SiftScience)",
+  "author": "SiftScience (https://github.com/SiftScience)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/SiftScience/sift-react-native/issues"
