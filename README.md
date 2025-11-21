@@ -5,174 +5,253 @@ A comprehensive React Native wrapper for Sift iOS and Android SDKs, enabling fra
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Installation](#installation)
-3. [Platform Setup](#platform-setup)
-4. [API Reference](#api-reference)
-5. [Usage Examples](#usage-examples)
-6. [Configuration](#configuration)
-7. [Troubleshooting](#troubleshooting)
-8. [Contributing](#contributing)
+2. [Getting Started](#getting-started-running-from-scratch)
+3. [Usage Examples](#usage-examples)
+4. [License](#license)
+5. [Support](#support)
 
 ## Overview
 
 Sift is the leader in Digital Trust & Safety, empowering organizations of all sizes to unlock new revenue without risk using machine learning. This React Native SDK provides a unified interface to integrate Sift's fraud prevention capabilities across both iOS and Android platforms.
 
-## Installation
+## Getting Started
+
+This guide will help you set up and run the sift-react-native project from scratch, including the example app.
 
 ### Prerequisites
 
-- React Native 0.60+
-- iOS 11.0+ (for iOS)
-- Android API 21+ (for Android)
-- Node.js 20+
+Before you begin, ensure you have the following installed:
 
-### Install the Package
+- **Node.js** 20.19.0+ (use [nvm](https://github.com/nvm-sh/nvm) or check `.nvmrc` file)
+- **Yarn** 3.6.1+ (will be installed automatically via Corepack)
+- **React Native development environment**:
+  - For iOS: Xcode 14+, CocoaPods, and iOS Simulator
+  - For Android: Android Studio, Android SDK, and Android Emulator
+- **Watchman** (recommended for file watching)
+- **Git**
+
+### Step 1: Clone the Repository
 
 ```bash
-npm install sift-react-native
+git clone https://github.com/SiftScience/sift-react-native.git
+cd sift-react-native
+```
+
+### Step 2: Install Dependencies
+
+The project uses Yarn 3.6.1 with workspaces. Dependencies will be installed automatically:
+
+```bash
+# Enable Corepack (if not already enabled)
+corepack enable
+
+# Install all dependencies (root + example app)
+yarn install
+```
+
+This will:
+- Install root project dependencies
+- Install example app dependencies
+- Link the workspace packages
+
+### Step 3: Build the Library
+
+Build the TypeScript source code and generate type definitions:
+
+```bash
+# Build the library
+yarn prepare
 # or
-yarn add sift-react-native
+npx react-native-builder-bob build
 ```
 
-### iOS Setup
+This creates the `lib/` directory with compiled JavaScript and TypeScript definitions.
 
-#### 1. Add Sift Pod to Podfile
+### Step 4: Set Up iOS (macOS only)
 
-Add the Sift pod to your `ios/Podfile`:
-
-```ruby
-target 'YourAppName' do
-  # ... other pods
-  pod 'Sift'
-end
-```
-
-#### 2. Install CocoaPods Dependencies
-
-Navigate to your iOS directory and install pods:
+#### Install CocoaPods Dependencies
 
 ```bash
-cd ios
-pod install
+cd example/ios
+bundle install  # Install Ruby dependencies (first time only)
+bundle exec pod install
+cd ../..
 ```
 
-### Android Setup
+#### Configure iOS Simulator
 
-#### 1. Add Sift Dependency
+Make sure you have an iOS Simulator available. You can list available simulators:
 
-The Android dependency is automatically included via the module's `build.gradle`:
-
-```gradle
-dependencies {
-    implementation "com.siftscience:sift-android:1.3.0"
-}
+```bash
+xcrun simctl list devices
 ```
 
-## Platform Setup
+### Step 5: Set Up Android
 
-### React Native Configuration
+#### Configure Android SDK
 
-#### 1. Import the Module
+Ensure your Android SDK is properly configured. The example app will use the SDK path from your environment or `ANDROID_HOME` variable.
 
-```typescript
-import SiftReactNative from 'sift-react-native';
+#### Create/Update local.properties
+
+If needed, create `example/android/local.properties`:
+
+```properties
+sdk.dir=/path/to/your/android/sdk
 ```
 
-#### 2. Initialize Sift
+Replace `/path/to/your/android/sdk` with your actual Android SDK path (typically `~/Library/Android/sdk` on macOS or `%LOCALAPPDATA%\Android\Sdk` on Windows).
 
-Configure Sift with your account credentials:
+#### Start Android Emulator
 
-```typescript
-// Basic configuration
-SiftReactNative.setSiftConfig(
-  'your-account-id',           // Account ID from Sift Console
-  'your-beacon-key',          // Beacon Key from Sift Console
-  true,                       // Disallow location collection (optional)
-  'https://api3.siftscience.com/v3/accounts/%s/mobile_events' // Server URL format
-);
+Start an Android emulator or connect a physical device:
+
+```bash
+# List available emulators
+emulator -list-avds
+
+# Start an emulator (replace with your AVD name)
+emulator -avd YourAVDName
 ```
 
-#### 3. Set User Context
+### Step 6: Run the Example App
 
-```typescript
-// Set user ID for tracking
-SiftReactNative.setUserId('user-123');
+#### Start Metro Bundler
 
-// Clear user ID when user logs out
-SiftReactNative.unsetUserId();
+In the root directory, start the Metro bundler:
+
+```bash
+# From root directory
+yarn start:example
+# or
+cd example && yarn start
 ```
 
-## API Reference
+Keep this terminal running.
 
-### Methods
+#### Run on iOS
 
-#### `setSiftConfig(accountId, beaconKey, disallowCollectingLocationData, serverUrlFormat)`
+In a new terminal:
 
-Initializes the Sift SDK with your account configuration.
-
-**Parameters:**
-- `accountId` (string): Your Sift account ID
-- `beaconKey` (string): Your Sift beacon key
-- `disallowCollectingLocationData` (boolean): Whether to disable location collection
-- `serverUrlFormat` (string): Custom server URL format (optional)
-
-**Example:**
-```typescript
-SiftReactNative.setSiftConfig(
-  'your-account-id',
-  'your-beacon-key',
-  false, // Allow location collection
-  'https://api3.siftscience.com/v3/accounts/%s/mobile_events'
-);
+```bash
+# From root directory
+yarn ios:example
+# or
+cd example && yarn ios
 ```
 
-#### `setUserId(userId)`
+#### Run on Android
 
-Associates the current session with a specific user ID.
+In a new terminal:
 
-**Parameters:**
-- `userId` (string): Unique identifier for the user
-
-**Example:**
-```typescript
-SiftReactNative.setUserId('user-12345');
+```bash
+# From root directory
+yarn android:example
+# or
+cd example && yarn android
 ```
 
-#### `unsetUserId()`
+### Step 7: Verify Installation
 
-Removes the user ID association from the current session.
+Once the app launches:
 
-**Example:**
-```typescript
-SiftReactNative.unsetUserId();
+1. The example app should display a form with fields for:
+   - Account ID
+   - Beacon Key
+   - User ID
+   - Server URL Format
+
+2. Fill in your Sift credentials and tap "UPLOAD" to test the integration.
+
+### Development Workflow
+
+#### Running Tests
+
+```bash
+# Run all tests
+yarn test
+
+# Run tests in watch mode
+yarn test --watch
 ```
 
-#### `upload()`
+#### Linting
 
-Manually triggers data upload to Sift servers.
-
-**Example:**
-```typescript
-SiftReactNative.upload();
+```bash
+# Lint the codebase
+yarn lint
 ```
 
-#### `onHostResume()`
+#### Type Checking
 
-Call this method when your app resumes from background.
-
-**Example:**
-```typescript
-SiftReactNative.onHostResume();
+```bash
+# Type check TypeScript files
+yarn typecheck
 ```
 
-#### `onHostPause()`
+#### Clean Build
 
-Call this method when your app goes to background.
-
-**Example:**
-```typescript
-SiftReactNative.onHostPause();
+```bash
+# Clean all build artifacts
+yarn clean
 ```
+
+### Troubleshooting
+
+#### Metro Bundler Issues
+
+If you encounter module resolution errors:
+
+```bash
+# Clear Metro cache
+yarn start:example --reset-cache
+```
+
+#### iOS Build Issues
+
+```bash
+# Clean and reinstall pods
+cd example/ios
+rm -rf Pods Podfile.lock
+bundle exec pod install
+cd ../..
+```
+
+#### Android Build Issues
+
+```bash
+# Clean Android build
+cd example/android
+./gradlew clean
+cd ../..
+```
+
+#### Yarn Workspace Issues
+
+If you encounter workspace linking issues:
+
+```bash
+# Remove node_modules and reinstall
+rm -rf node_modules example/node_modules
+yarn install
+```
+
+### Project Structure
+
+```
+sift-react-native/
+├── src/                    # TypeScript source code
+├── lib/                    # Compiled output (generated)
+├── ios/                    # iOS native implementation
+├── android/                # Android native implementation
+├── example/                # Example React Native app
+│   ├── src/               # Example app source
+│   ├── ios/               # iOS example app
+│   └── android/           # Android example app
+├── package.json           # Root package configuration
+└── yarn.lock             # Dependency lock file
+```
+
 
 ## Usage Examples
 
