@@ -12,7 +12,6 @@
 - ESLint 9.x with flat config format
 - Modern ESM package exports
 - PrivacyInfo.xcprivacy for iOS App Store compliance
-- CODE_OF_CONDUCT.md and CONTRIBUTING.md documentation
 
 ### Changed
 - **BREAKING**: Migrated from React Native 0.62.2 to 0.81.1
