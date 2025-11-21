@@ -1,6 +1,6 @@
 # Sift React Native SDK Documentation
 
-A comprehensive React Native wrapper for Sift iOS and Android SDKs, enabling fraud prevention and digital trust & safety in your mobile applications.
+React Native wrapper for Sift [iOS](https://github.com/SiftScience/sift-ios) and [Android](https://github.com/SiftScience/sift-android) SDKs
 
 ## Table of Contents
 
