@@ -295,6 +295,3 @@ For technical support and questions:
 - **Issues**: [GitHub Issues](https://github.com/SiftScience/sift-react-native/issues)
 - **Email**: support@sift.com
 
----
-
-Made with ❤️ by the Sift team
