@@ -10,10 +10,6 @@ React Native wrapper for Sift [iOS](https://github.com/SiftScience/sift-ios) and
 4. [License](#license)
 5. [Support](#support)
 
-## Overview
-
-Sift is the leader in Digital Trust & Safety, empowering organizations of all sizes to unlock new revenue without risk using machine learning. This React Native SDK provides a unified interface to integrate Sift's fraud prevention capabilities across both iOS and Android platforms.
-
 ## Getting Started
 
 This guide will help you set up and run the sift-react-native project from scratch, including the example app.
