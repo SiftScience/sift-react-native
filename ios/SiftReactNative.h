@@ -1,5 +1,5 @@
-#import <React/RCTBridgeModule.h>
+#import "SiftReactNativeSpec.h"
 
-@interface SiftReactNative : NSObject <RCTBridgeModule>
+@interface SiftReactNative : NSObject <NativeSiftReactNativeSpec>
 
 @end

@@ -1,143 +1,135 @@
-﻿# sift-react-native
+# Sift React Native SDK
 
 React Native wrapper for Sift [iOS](https://github.com/SiftScience/sift-ios) and [Android](https://github.com/SiftScience/sift-android) SDKs
 
+## Table of Contents
+
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [API Reference](#api-reference)
+5. [Example App](#example-app)
+6. [License](#license)
+7. [Support](#support)
+
+## Requirements
+
+- **Node.js**: 22.0.0 or higher
+- **React Native**: 0.60.0 or higher
+- **React**: 16.8.0 or higher
+
+### iOS
+- **iOS**: 13.4 or higher
+- **CocoaPods**: Latest version recommended
+
+### Android
+- **Android SDK**: API level 24 (Android 7.0) or higher
+- **Kotlin**: 1.6.0 or higher
+- **Java**: 8 or higher
+
 ## Installation
 
-- Install library from **npm**:  
-   `yarn add sift-react-native`  
-   or  
-   `npm install sift-react-native`
+```bash
+# Using npm
+npm install sift-react-native
 
-## Link native code
+# OR using Yarn
+yarn add sift-react-native
+```
 
-### Android React Native 0.60.0 or above
+### iOS Setup
 
-No additional setup is required
+Add the Sift pod to your `ios/Podfile`:
 
-### iOS React Native 0.60.0 or above
+```ruby
+pod 'Sift'
+```
 
-Mostly autolinking will do the job. If manual linking is required, please follow the below steps:
+Then install CocoaPods dependencies:
 
-1.  Insert the following line in Podfile where new pods are added:
-    `pod 'sift-react-native', :path => '../node_modules/sift-react-native'`
-2.  Navigate to the ios directory of the project via terminal and run `pod install`
+```bash
+cd ios
+pod install
+cd ..
+```
 
-### Android React Native 0.59 or below
+### Android Setup
 
-#### Automatically
-
-`react-native link`
-
-#### Manually
-
-1.  Append the following lines to `android/settings.gradle`:
-
-    `include ':sift-react-native'`
-
-    `project(':sift-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/sift-react-native/android')`
-
-2.  Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-
-    implementation project(':sift-react-native')
-
-3.  Open up `android/app/src/main/java/[...]/MainApplication.java`
-
-- Add `import com.siftreactnative.SiftReactNativePackage;` to the imports at the top of the file
-- Add `new SiftReactNativePackage()` to the list returned by the `getPackages()` method. Add a comma to the previous item if there's already something there.
-
-Insert the following lines inside the dependencies block in
-`android/app/build.gradle`:
-
-       implementation 'com.android.support:support-v4:27.0.2'
-
-### iOS React Native 0.59 or below
-
-Support will be available soon
+No additional setup required. The Android SDK will be automatically linked.
 
 ## Usage
 
-First, import the module:
+### Basic Integration
 
-```js
+```typescript
+import React, { useEffect } from 'react';
 import SiftReactNative from 'sift-react-native';
+
+const App = () => {
+  useEffect(() => {
+    // Initialize Sift when app starts
+    SiftReactNative.setSiftConfig(
+      'your-account-id',
+      'your-beacon-key',
+      false, // Allow location collection
+      'https://api3.siftscience.com/v3/accounts/%s/mobile_events'
+    );
+  }, []);
+
+  const handleUserLogin = (userId: string) => {
+    SiftReactNative.setUserId(userId);
+    SiftReactNative.upload();
+  };
+
+  const handleUserLogout = () => {
+    SiftReactNative.unsetUserId();
+  };
+
+  return (
+    // Your app components
+  );
+};
 ```
 
-Then, invoke the following method to initialise the SDK:
+## API Reference
 
-#### Configure the account details
+### setSiftConfig(accountId, beaconKey, disallowLocationCollection, serverUrlFormat)
 
-```js
-SiftReactNative.setSiftConfig(
-  accountId,
-  beaconKey,
-  disallowCollectingLocationData,
-  serverUrlFormat
-);
-```
+Initializes the Sift SDK with your credentials.
 
-Where:
+**Parameters:**
+- `accountId` (string): Your Sift account ID
+- `beaconKey` (string): Your Sift beacon key
+- `disallowLocationCollection` (boolean): Set to `true` to disable location collection
+- `serverUrlFormat` (string): Server URL format (default: `'https://api3.siftscience.com/v3/accounts/%s/mobile_events'`)
 
-- **accountId** (string, the Account ID that needs to be obtained from Sift console under [API Keys](https://console.sift.com/developer/api-keys) tab) **_required_**
-- **beaconKey** (string, the Beacon Key that needs to be obtained from Sift console under [API Keys](https://console.sift.com/developer/api-keys) tab) **_required_**
-- **disallowCollectingLocationData** (boolean, permission to allow collection of location data from device)
-  > _Make sure to add location permissions to your application if you want Sift to collect location data.
-  > Sift will not request permissions that are not granted by the user from your application._
-- **serverUrlFormat** (string, the format of URL where the data needs to be uploaded)
-  -- Sample URL format for iOS: `https://api3.siftscience.com/v3/accounts/%@/mobile_events`
-  -- Sample URL format for Android: `https://api3.siftscience.com/v3/accounts/%s/mobile_events`
-  > **_NB: This feature is available only in iOS platform_**
+### setUserId(userId)
 
-#### Set the User ID
+Sets the user ID for tracking.
 
-As soon as your application is aware of the user id, set it on the Sift instance using the code below. All subsequent events will include the user id.
+**Parameters:**
+- `userId` (string): The user identifier
 
-```js
-SiftReactNative.setUserId(userId);
-```
+### unsetUserId()
 
-If the user logs out of your application, you should unset the user id:
+Clears the current user ID. Call this when a user logs out.
 
-```js
-SiftReactNative.unsetUserId();
-```
+### upload()
 
-#### Upload event
+Manually uploads collected data to Sift. The SDK automatically uploads data periodically, but you can call this method to force an immediate upload.
 
-To upload collected events to sift.
+## Example App
 
-```js
-SiftReactNative.upload();
-```
-
-#### Set page name
-
-> **_NB: This feature is available only in Android platform_**
-
-To set the page name
-
-```js
-SiftReactNative.setPageName('HomePage');
-```
-
-## Example
-
-To see `sift-react-native` in action you can check out the source in the `example` folder.
-
-### To initialize example project
-
-    yarn bootstrap
-
-When the bootstrap is done, you will be able to start the example app by executing one of the following commands:
-
-### iOS app
-
-    yarn example ios
-
-### Android app
-
-    yarn example android
+To see the SDK in action, check out the example app in the [example/](example/) directory. See the [example/README.md](example/README.md) for setup and running instructions.
 
 ## License
 
-MIT
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## Support
+
+For technical support and questions:
+
+- **Documentation**: [Sift Developer Docs](https://developers.sift.com)
+- **Issues**: [GitHub Issues](https://github.com/SiftScience/sift-react-native/issues)
+- **Email**: support@sift.com

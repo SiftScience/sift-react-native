@@ -1,17 +1,4 @@
-import { NativeModules } from 'react-native';
+import SiftReactNative from './NativeSiftReactNative';
 
-type SiftReactNativeType = {
-  setSiftConfig(
-    accountId: string,
-    beaconKey: string,
-    disallowCollectingLocationData: boolean,
-    serverUrlFormat: string
-  ): void;
-  setUserId(userId: string): void;
-  unsetUserId(): void;
-  upload(): void;
-};
-
-const { SiftReactNative } = NativeModules;
-
-export default SiftReactNative as SiftReactNativeType;
+export const isBridgeAvailable = (): boolean => !!SiftReactNative;
+export default SiftReactNative;
