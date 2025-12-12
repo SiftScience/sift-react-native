@@ -4,12 +4,28 @@ React Native wrapper for Sift [iOS](https://github.com/SiftScience/sift-ios) and
 
 ## Table of Contents
 
-1. [Installation](#installation)
-2. [Usage](#usage)
-3. [API Reference](#api-reference)
-4. [Example App](#example-app)
-5. [License](#license)
-6. [Support](#support)
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [API Reference](#api-reference)
+5. [Example App](#example-app)
+6. [License](#license)
+7. [Support](#support)
+
+## Requirements
+
+- **Node.js**: 22.0.0 or higher
+- **React Native**: 0.60.0 or higher
+- **React**: 16.8.0 or higher
+
+### iOS
+- **iOS**: 13.4 or higher
+- **CocoaPods**: Latest version recommended
+
+### Android
+- **Android SDK**: API level 24 (Android 7.0) or higher
+- **Kotlin**: 1.6.0 or higher
+- **Java**: 8 or higher
 
 ## Installation
 
@@ -23,7 +39,13 @@ yarn add sift-react-native
 
 ### iOS Setup
 
-Install CocoaPods dependencies:
+Add the Sift pod to your `ios/Podfile`:
+
+```ruby
+pod 'Sift'
+```
+
+Then install CocoaPods dependencies:
 
 ```bash
 cd ios
