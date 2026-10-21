@@ -10,6 +10,7 @@ export interface Spec extends TurboModule {
   setUserId(userId: string): void;
   unsetUserId(): void;
   upload(): void;
+  setPageName(pageName: string | null): void;
   onHostResume(): void;
   onHostPause(): void;
 }

@@ -7,6 +7,7 @@ const mockNativeModule: jest.Mocked<Spec> = {
   setUserId: jest.fn(),
   unsetUserId: jest.fn(),
   upload: jest.fn(),
+  setPageName: jest.fn(),
   onHostResume: jest.fn(),
   onHostPause: jest.fn(),
 };
@@ -150,6 +151,10 @@ describe('SiftReactNative JS API', () => {
       disallow,
       serverUrl
     );
+  });
+
+  it('exposes setPageName on the native spec surface', () => {
+    expect(typeof SiftReactNative.setPageName).toBe('function');
   });
 
   it('isBridgeAvailable returns true when bridge is present', () => {
