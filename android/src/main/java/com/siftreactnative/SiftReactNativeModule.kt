@@ -1,6 +1,5 @@
 package com.siftreactnative
 
-import android.text.TextUtils
 import com.facebook.react.bridge.LifecycleEventListener
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
@@ -15,9 +14,12 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) :
 
   companion object {
     const val NAME = "SiftReactNative"
-  }
 
-  private var siftConfig: Sift.Config? = null
+    // The Sift SDK is a process-wide singleton, so the state that mirrors it
+    // outlives any single module instance (a JS reload creates a new one).
+    @Volatile
+    private var siftConfig: Sift.Config? = null
+  }
 
   init {
     reactContext.addLifecycleEventListener(this)
@@ -60,6 +62,15 @@ class SiftReactNativeModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   override fun upload() {
+    Sift.collect()
+  }
+
+  @ReactMethod
+  override fun setPageName(pageName: String?) {
+    // The SDK keeps the screen name itself, including before it is configured,
+    // and null or an empty name clears it.
+    Sift.setScreenTitle(pageName)
+    if (siftConfig == null) return
     Sift.collect()
   }
 
