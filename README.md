@@ -21,7 +21,7 @@ React Native wrapper for Sift [iOS](https://github.com/SiftScience/sift-ios) and
 ### iOS
 - **iOS**: 13.4 or higher
 - **CocoaPods**: Latest version recommended
-- **Sift iOS SDK**: a version that includes the manual screen label API ([sift-ios#167](https://github.com/SiftScience/sift-ios/pull/167)), required by `setPageName`
+- **Sift iOS SDK**: 2.2.7 or higher, which has the manual screen label API required by `setPageName`
 
 ### Android
 - **Sift Android SDK**: 1.4.0 or higher, which has the manual screen name API required by `setPageName`
@@ -44,7 +44,7 @@ yarn add sift-react-native
 Add the Sift pod to your `ios/Podfile`:
 
 ```ruby
-pod 'Sift'
+pod 'Sift', '>= 2.2.7'
 ```
 
 Then install CocoaPods dependencies:
